@@ -26,18 +26,22 @@ def blur_image(image_path, kernel_size=(5, 5), sigmaX=20):
     return blurred_image
 
 
-def show_image_and_save_by_path(title, input_path, output_path=None):
+def show_image_and_save_by_path(title, input_path, output_path=None, filename=None):
     image = cv2.imread(input_path)
     plt.title(title)
     plt.subplot(1, 1, 1)
     plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     plt.show()
-    if output_path:
-        save_image(output_path, image)
+    if output_path and filename:
+        save_image(output_path, image, filename)
 
 
-def save_image(output_path, image):
-    cv2.imwrite(output_path, image)
+def save_image(output_path, image, filename):
+    try:
+        cv2.imwrite(output_path + '\\' + filename, image)
+    except Exception as e:
+        print("Error saving the image:", e)
+        print("Wrong input. Please check the file paths and the image.")
 
 
 def show_image(image, title):
