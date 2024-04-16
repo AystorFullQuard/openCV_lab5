@@ -1,5 +1,6 @@
 from Constants import *
 from task1.ImageEnhancer import *
+from task2.ImageDetection import *
 
 
 def test_task1(image_path, image):
@@ -18,9 +19,20 @@ def test_task1(image_path, image):
     save_image(Paths.results_path_task1.value, sharpened_image_2, 'sharpened_image_2_test.jpg')
 
 
+def test_task2(image_path):
+    detected_face = detect_face(image_path, scaleFactor=1.3, minNeighbors=5, output_path=Paths.results_path_task2.value, filename='detected_face.jpg')
+    if detected_face is not None:
+        print(detected_face['coordinates'])
+    else:
+        print("Failed to detect a face in the image")
+
+
 if __name__ == '__main__':
     test_images_jpg_files = [f for f in os.listdir(Paths.test_images_path.value) if f.endswith('.jpg')]
-    image_path = Paths.test_images_path.value + '\\' + test_images_jpg_files[3]
+    image_path = Paths.test_images_path.value + '\\' + test_images_jpg_files[0]
     image = cv2.imread(image_path)
-
+    # task1
     test_task1(image_path, image)
+
+    # task2
+    test_task2(image_path)

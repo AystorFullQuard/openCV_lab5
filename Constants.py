@@ -7,3 +7,4 @@ class Paths(Enum):
     test_images_path = os.path.join(project_path, 'test_images')
     results_path = os.path.join(project_path, 'results')
     results_path_task1 = os.path.join(results_path, 'task1')
+    results_path_task2 = os.path.join(results_path, 'task2')
