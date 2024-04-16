@@ -20,7 +20,7 @@ def test_task1(image_path, image):
 
 if __name__ == '__main__':
     test_images_jpg_files = [f for f in os.listdir(Paths.test_images_path.value) if f.endswith('.jpg')]
-    image_path = Paths.test_images_path.value + '\\' + test_images_jpg_files[5]
+    image_path = Paths.test_images_path.value + '\\' + test_images_jpg_files[3]
     image = cv2.imread(image_path)
 
     test_task1(image_path, image)
