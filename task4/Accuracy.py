@@ -13,16 +13,16 @@ def check_accuracy(csv_path):
     for filename in os.listdir(Paths.results_path_task4.value):
             os.remove(os.path.join(Paths.results_path_task4.value, filename))
 
-    # for test_image in test_images_jpg_files:
-    #     image_path = os.path.join(Paths.test_images_path.value, test_image)
-    #
-    #     result = passport_photo_check(image_path, scaleFactor=1.2, minNeighbors=5, output_path=Paths.results_path_task4.value, filename=f'detected_face_{correct_detections}.jpg')
-    #     file_name = 'test_images/' + os.path.basename(image_path)
-    #
-    #     actual_label = csv_file[csv_file['new_path'] == file_name]['label'].item()
-    #     if (result == "Photo is suitable for a passport" and actual_label == True) or \
-    #             (result != "Photo is suitable for a passport" and actual_label == False):
-    #         correct_detections += 1
+    for test_image in test_images_jpg_files:
+        image_path = os.path.join(Paths.test_images_path.value, test_image)
+
+        result = passport_photo_check(image_path, scaleFactor=1.2, minNeighbors=5, output_path=Paths.results_path_task4.value, filename=f'detected_face_{correct_detections}.jpg')
+        file_name = 'test_images/' + os.path.basename(image_path)
+
+        actual_label = csv_file[csv_file['new_path'] == file_name]['label'].item()
+        if (result == "Photo is suitable for a passport" and actual_label == True) or \
+                (result != "Photo is suitable for a passport" and actual_label == False):
+            correct_detections += 1
 
     accuracy = correct_detections / len(csv_file)
     print(f'Correct detections: {correct_detections}')
