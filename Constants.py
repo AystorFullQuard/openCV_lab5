@@ -8,5 +8,6 @@ class Paths(Enum):
     results_path = os.path.join(project_path, 'results')
     results_path_task1 = os.path.join(results_path, 'task1')
     results_path_task2 = os.path.join(results_path, 'task2')
+    results_path_task3 = os.path.join(results_path, 'task3')
     results_path_task4 = os.path.join(results_path, 'task4')
     csv_path = os.path.join(project_path, 'test.csv')

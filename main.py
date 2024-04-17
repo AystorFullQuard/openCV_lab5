@@ -32,19 +32,21 @@ def test_task2(image_path):
 
 def test_task3(image_path, image):
     show_image(image, 'Passport check Image')
-    result = passport_photo_check(image_path)
+    result = passport_photo_check(image_path, output_path=Paths.results_path_task3.value, filename='passport_image.jpg')
     print(result)
 
 
 if __name__ == '__main__':
     test_images_jpg_files = [f for f in os.listdir(Paths.test_images_path.value) if f.endswith('7E0875.jpg')]
+    #test_images_jpg_files = [f for f in os.listdir(Paths.test_images_path.value) if f.endswith('.jpg')]
+
     image_path = Paths.test_images_path.value + '\\' + test_images_jpg_files[0]
     image = cv2.imread(image_path)
     # # task1
     test_task1(image_path, image)
-    # # task 2
+    # task 2
     test_task2(image_path)
-    # # task 3
+    # task 3
     test_task3(image_path, image)
 
     check_accuracy(Paths.csv_path.value)
