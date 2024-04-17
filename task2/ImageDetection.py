@@ -35,6 +35,6 @@ def detect_face(image_path, scaleFactor=1.3, minNeighbors=5, output_path=None, f
             print(f"Face detected at coordinates: ({x}, {y}, {w}, {h})")
             save_image(output_path, image, filename)
             print(f"Image saved to {output_path}")
-        result['image'] = image  # Добавляем изображение с эллипсом в словарь
+        result['image_detected_face'] = image  # Добавляем изображение с эллипсом в словарь
         result['faces'] = faces
         return result
