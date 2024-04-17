@@ -16,7 +16,7 @@ def check_accuracy(csv_path):
     for test_image in test_images_jpg_files:
         image_path = os.path.join(Paths.test_images_path.value, test_image)
 
-        result = passport_photo_check(image_path, scaleFactor=1.2, minNeighbors=5, output_path=Paths.results_path_task4.value, filename=f'detected_face_{correct_detections}.jpg')
+        result = passport_photo_check(image_path, scaleFactor=1.3, minNeighbors=10, output_path=Paths.results_path_task4.value, filename=f'detected_face_{correct_detections}.jpg')
         file_name = 'test_images/' + os.path.basename(image_path)
 
         actual_label = csv_file[csv_file['new_path'] == file_name]['label'].item()
@@ -26,4 +26,4 @@ def check_accuracy(csv_path):
 
     accuracy = correct_detections / len(csv_file)
     print(f'Correct detections: {correct_detections}')
-    print(f'Accuracy of the system is: {accuracy:.2f}')
+    print(f'Accuracy of the system is: {accuracy:.3f}')

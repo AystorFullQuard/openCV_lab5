@@ -4,7 +4,9 @@ import numpy as np
 from Constants import Paths
 from task2.ImageDetection import detect_face
 
-
+# (R, G, B). Если каналы одинаковы, это означает, что каждый пиксель имеет одинаковую интенсивность для красного,
+# зеленого и синего цветов, что характерно для черно-белых или серых изображений.
+# В таких случаях функция возвращает False.
 def is_photo_colored(image_path):
     image = cv2.imread(image_path)
     # Если изображение не было загружено, вернуть False
@@ -40,10 +42,12 @@ def get_face_coordinates(image_path, scaleFactor, minNeighbors, output_path, fil
         return face_data['faces']
     return None
 
-
+#В области интереса производится поиск глаз с помощью метода eyes_cascade.detectMultiScale(roi_gray).
+# Этот метод возвращает список прямоугольных областей, каждая из которых соответствует обнаруженному глазу.
 def check_eyes_level(image_path, scaleFactor, minNeighbors, output_path, filename):
     eyes_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
     image = cv2.imread(image_path)
+    # преобразуется в градации серого, что упрощает последующий процесс обнаружения
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = get_face_coordinates(image_path, scaleFactor, minNeighbors, output_path, filename)
     if faces is not None:

@@ -43,10 +43,10 @@ if __name__ == '__main__':
     image_path = Paths.test_images_path.value + '\\' + test_images_jpg_files[0]
     image = cv2.imread(image_path)
     # task1
-    test_task1(image_path, image)
+    #test_task1(image_path, image)
     # task 2
-    test_task2(image_path)
+    #test_task2(image_path)
     # task 3
-    test_task3(image_path, image)
+    #test_task3(image_path, image)
     # task 4
     check_accuracy(Paths.csv_path.value)
