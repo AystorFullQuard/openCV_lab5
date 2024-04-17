@@ -1,3 +1,5 @@
+import os.path
+
 import cv2
 
 from task1.ImageEnhancer import save_image
@@ -16,7 +18,8 @@ def detect_face(image_path, scaleFactor=1.3, minNeighbors=5, output_path=None, f
     # Обнаруживаем лица в изображении
     faces = face_cascade.detectMultiScale(gray_image, scaleFactor, minNeighbors)
     if len(faces) == 0:
-        print("No face detected!")
+        relative_image_path = os.path.relpath(image_path, start=os.path.curdir)
+        print(f'No face detected for {relative_image_path}')
         return None
     else:
         # Создаем словарь для хранения результата

@@ -2,6 +2,7 @@ from Constants import *
 from task1.ImageEnhancer import *
 from task2.ImageDetection import *
 from task3.PassportControl import *
+from task4.Accuracy import check_accuracy
 
 
 def test_task1(image_path, image):
@@ -39,9 +40,11 @@ if __name__ == '__main__':
     test_images_jpg_files = [f for f in os.listdir(Paths.test_images_path.value) if f.endswith('7E0875.jpg')]
     image_path = Paths.test_images_path.value + '\\' + test_images_jpg_files[0]
     image = cv2.imread(image_path)
-    # task1
+    # # task1
     test_task1(image_path, image)
-    # task 2
+    # # task 2
     test_task2(image_path)
-    # task 3
+    # # task 3
     test_task3(image_path, image)
+
+    check_accuracy(Paths.csv_path.value)

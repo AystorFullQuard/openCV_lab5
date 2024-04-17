@@ -35,7 +35,7 @@ def get_face_coordinates(image_path):
     # gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     # faces = face_cascade.detectMultiScale(gray_image, scaleFactor=1.5, minNeighbors=5)
     # return faces
-    face_data = detect_face(image_path, scaleFactor=1.5, minNeighbors=6, output_path=Paths.results_path_task2.value,
+    face_data = detect_face(image_path, scaleFactor=1.5, minNeighbors=6, output_path=Paths.results_path_task4.value,
                             filename='detected_face.jpg')
     if face_data is not None:
         return face_data['faces']
