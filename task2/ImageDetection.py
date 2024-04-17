@@ -22,18 +22,19 @@ def detect_face(image_path, scaleFactor=1.3, minNeighbors=5, output_path=None, f
         # Создаем словарь для хранения результата
         result = {
             'image': None,
-            'coordinates': None
+            'faces': None
         }
+
         for (x, y, w, h) in faces:
             center = (x + w // 2, y + h // 2)
             axes = (w // 2, h // 2)
             cv2.ellipse(image, center, axes, 0, 0, 360, color=(255, 0, 255), thickness=2)
 
         x, y, w, h = faces[0]
-        print(f"Face detected at coordinates: ({x}, {y}, {w}, {h})")
         if output_path and filename:
+            print(f"Face detected at coordinates: ({x}, {y}, {w}, {h})")
             save_image(output_path, image, filename)
             print(f"Image saved to {output_path}")
         result['image'] = image  # Добавляем изображение с эллипсом в словарь
-        result['coordinates'] = (x, y, w, h)
+        result['faces'] = faces
         return result
